@@ -54,13 +54,13 @@ export class DepartmentComponent implements OnInit {
     this.depEdit = null
   }
   cancel(){
-
+    this.clear()
   }
   delete(dep: Department){
     this.departmentService.del(dep)
       .subscribe(
         ()=> this.notify('Removed'),
-        (err)=>console.log(err)
+        (err)=>this.notify(err.error.err)
       )
   }
   edit(dep: Department){
